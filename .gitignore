@@ -1,0 +1,10 @@
+# Ignore Python bytecode files
+*.pyc
+**/obj
+**/build
+# test.py
+**/__pycache__
+lib/ffmpeg/
+*.log
+**/backup
+**/.vscode
