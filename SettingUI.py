@@ -38,6 +38,12 @@ class SettingUI(OneGPUWidget):
 
         # 标题栏
         self._init_title_bar()
+        # 图标
+        self.icon_label = QLabel()
+        self.icon_label.setPixmap(QPixmap(f"{ICON_PATH}/computer_t.png").scaled(128, 128, Qt.KeepAspectRatio, Qt.SmoothTransformation))
+        self.icon_label.setAlignment(Qt.AlignCenter)
+        self.icon_label.setFixedSize(256, 190)
+        self.main_layout.addWidget(self.icon_label, alignment=Qt.AlignCenter)
         # 效果设置区
         self._init_effects_controls()
         self._init_target_controls()
@@ -213,12 +219,17 @@ if __name__ == "__main__":
     setting_ui.update_sdf(width=500, height=1000, radius_ratio=0.3, scale=0.9)
 
     effects_params = EFFECTS_PARAMS.copy()
+    effects_params["color_overlay"]["params"]["color"]["value"] = (1.0, 0.0, 1.0)
+    effects_params["color_overlay"]["params"]["strength"]["value"] = 0.1
+    effects_params["blur"]["enable"] = True
+
     setting_ui.update_effects(effects_params)
     enable_effects = []
     for name in [name for name, param in effects_params.items() if param["enable"]]:
         for key, value in EFFECT_TYPE_MAPPING.items():
             if value == name:
                 enable_effects.append(key)
+
     setting_ui.enable_effects(enable_effects)
 
     if PYSIDE_VERSION == 2:
