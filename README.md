@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🪟 Windows Liquid Glass
+# Windows Liquid Glass
 
 **Windows 桌面端液态玻璃 Qt 组件**
 
@@ -9,13 +9,13 @@
 [![PySide](https://img.shields.io/badge/PySide-2%20%7C%206-41CD52?logo=qt&logoColor=white)](https://doc.qt.io/qtforpython/)
 [![Windows](https://img.shields.io/badge/Windows-10%2F11-0078D6?logo=windows&logoColor=white)](https://www.microsoft.com/windows)
 
-[📺 Bilibili 演示](https://www.bilibili.com/video/BV1eBfiBuEyK/) · [▶️ YouTube 演示](https://www.bilibili.com/video/BV1eBfiBuEyK/)
+[Bilibili](https://www.bilibili.com/video/BV1eBfiBuEyK/) · [YouTube](https://www.bilibili.com/video/BV1eBfiBuEyK/)
 
 </div>
 
 ---
 
-## ✨ 效果预览
+## 效果预览
 
 <div align="center">
   <img src="images/WindowsLiquidGlass.png" alt="液态玻璃效果" width="80%"/>
@@ -25,7 +25,7 @@
 
 ---
 
-## 📦 环境要求
+## 环境要求
 
 | 依赖 | 版本 |
 |------|------|
@@ -36,7 +36,7 @@
 
 ---
 
-## 🚀 快速开始
+## 快速开始
 
 **1. 克隆仓库**
 
@@ -81,18 +81,18 @@ if __name__ == "__main__":
 
 ---
 
-## 📚 API 文档
+## API 文档
 
 | 模块 | 描述 |
 |------|------|
-| [🖥️ GPU 设备管理器](src/GPUDeviceManager/README.md) | 管理 GPU 设备与上下文 |
-| [📐 SDF 生成器](src/SDFGenerator/README.md) | 有向距离场生成 |
-| [🎨 特效渲染器](src/GPUEffectRenderer/README.md) | GPU 加速特效渲染 |
-| [🧩 Qt 组件基类](src/GPUSharderWidget/README.md) | 液态玻璃 Qt 组件基础类 |
+| [GPU 设备管理器](src/GPUDeviceManager/README.md) | 管理 GPU 设备与上下文 |
+| [SDF 生成器](src/SDFGenerator/README.md) | 有向距离场生成 |
+| [特效渲染器](src/GPUEffectRenderer/README.md) | GPU 加速特效渲染 |
+| [Qt 组件基类](src/GPUSharderWidget/README.md) | 液态玻璃 Qt 组件基础类 |
 
 ---
 
-## 📄 许可证
+## 许可证
 
 本项目基于 [MIT License](LICENSE) 开源，欢迎自由使用与贡献。
 
