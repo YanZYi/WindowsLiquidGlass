@@ -9,7 +9,7 @@
 [![PySide](https://img.shields.io/badge/PySide-2%20%7C%206-41CD52?logo=qt&logoColor=white)](https://doc.qt.io/qtforpython/)
 [![Windows](https://img.shields.io/badge/Windows-10%2F11-0078D6?logo=windows&logoColor=white)](https://www.microsoft.com/windows)
 
-[Bilibili](https://www.bilibili.com/video/BV1eBfiBuEyK/) · [YouTube](https://www.bilibili.com/video/BV1eBfiBuEyK/)
+[Bilibili](https://www.bilibili.com/video/BV1eBfiBuEyK/) · [YouTube](https://youtu.be/x7mPpVKJA7Q)
 
 </div>
 
