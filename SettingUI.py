@@ -24,7 +24,7 @@ from WindowsLiquidGlass.src.GPUDeviceManager import GPUDeviceManager
 
 class SettingUI(OneGPUWidget):
     def __init__(self):
-        super().__init__(qt_move=True)
+        super().__init__(qt_move=False)
 
         self._target = None
 
@@ -48,6 +48,21 @@ class SettingUI(OneGPUWidget):
         self._init_effects_controls()
         self._init_target_controls()
 
+    def _init_effects(self):
+        effects_params = EFFECTS_PARAMS.copy()
+        effects_params["color_overlay"]["params"]["color"]["value"] = (1.0, 0.0, 1.0)
+        effects_params["color_overlay"]["params"]["strength"]["value"] = 0.1
+        effects_params["blur"]["enable"] = True
+
+        self.update_effects(effects_params)
+        enable_effects = []
+        for name in [name for name, param in effects_params.items() if param["enable"]]:
+            for key, value in EFFECT_TYPE_MAPPING.items():
+                if value == name:
+                    enable_effects.append(key)
+
+        self.enable_effects(enable_effects)
+        
     def _init_title_bar(self):
         title_bar = QWidget()
         self.main_layout.addWidget(title_bar)
@@ -159,7 +174,7 @@ class SettingUI(OneGPUWidget):
     def _init_target(self):
         if self._target is not None:
             return
-        self._target = OneGPUWidget(mgr=GPUDeviceManager(), qt_move=True)
+        self._target = OneGPUWidget(mgr=GPUDeviceManager(), qt_move=False)
         self._target.set_capture_source(display_index=0)
         self._target.show()
         self._target.start(fps=60)
@@ -208,29 +223,17 @@ class SettingUI(OneGPUWidget):
                     enable_effects.append(key)
         self._target.enable_effects(enable_effects)
 
+    def showEvent(self, event):
+        super().showEvent(event)
+        self._init_effects()
+        self.start(fps=60)
+        self.update_sdf(width=500, height=1000, radius_ratio=0.3, scale=0.9)
+
 if __name__ == "__main__":
 
     app = QApplication(sys.argv)
     setting_ui = SettingUI()
-    setting_ui.set_capture_source(display_index=0)
     setting_ui.show()
-    setting_ui.start(fps=60)
-
-    setting_ui.update_sdf(width=500, height=1000, radius_ratio=0.3, scale=0.9)
-
-    effects_params = EFFECTS_PARAMS.copy()
-    effects_params["color_overlay"]["params"]["color"]["value"] = (1.0, 0.0, 1.0)
-    effects_params["color_overlay"]["params"]["strength"]["value"] = 0.1
-    effects_params["blur"]["enable"] = True
-
-    setting_ui.update_effects(effects_params)
-    enable_effects = []
-    for name in [name for name, param in effects_params.items() if param["enable"]]:
-        for key, value in EFFECT_TYPE_MAPPING.items():
-            if value == name:
-                enable_effects.append(key)
-
-    setting_ui.enable_effects(enable_effects)
 
     if PYSIDE_VERSION == 2:
         sys.exit(app.exec_())
